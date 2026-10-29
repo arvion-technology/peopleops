@@ -1,4 +1,4 @@
-// PeopleOps demo — rendering and interaction only.
+// PeopleOps demo, rendering and interaction only.
 // Leave arithmetic is in ../src/leave.js, onboarding dates in
 // ../src/onboarding.js, and both are exercised by the test suite.
 import {
@@ -194,7 +194,7 @@ function renderOnboarding() {
     el("dl", { class: "kv mt-2" },
       el("dt", { text: "Start date" }), el("dd", { text: dateLabel(row.startDate) }),
       el("dt", { text: "Department" }), el("dd", { text: deptLabel(person.departmentId) }),
-      el("dt", { text: "Manager" }), el("dd", { text: personById(person.managerId)?.name ?? "—" }),
+      el("dt", { text: "Manager" }), el("dd", { text: personById(person.managerId)?.name ?? ", " }),
       el("dt", { text: "Tasks" }), el("dd", { class: "mono", text: `${progress.done} of ${progress.total}` }),
       el("dt", { text: "Overdue" }), el("dd", { class: "mono", style: progress.overdueCount ? "color:var(--red)" : null, text: progress.overdueCount ? String(progress.overdueCount) : "none" }),
       el("dt", { text: "Next" }), el("dd", { text: progress.next ? progress.next.label : "All done" })),
@@ -241,7 +241,7 @@ function renderOnboarding() {
           el("span", { class: "task-owner", text: task.owner }),
           el("span", { class: "spacer" }),
           el("span", { class: "mono", style: task.overdue ? "color:var(--red)" : null, text: fmt.date(task.dueAt) })))),
-      items.length === 0 ? el("div", { class: "small muted center", style: "padding:14px 0", text: "—" }) : null);
+      items.length === 0 ? el("div", { class: "small muted center", style: "padding:14px 0", text: ", " }) : null);
   }));
 }
 
@@ -267,7 +267,7 @@ function renderLeave() {
   $("#leave-to").value = isoDate(state.to);
 
   const person = personById(state.leavePerson);
-  $("#balance-person").textContent = person ? person.name : "—";
+  $("#balance-person").textContent = person ? person.name : ", ";
   $("#balance-panel").replaceChildren(...(person ? balancesFor(person, data.requests) : []).map((balance) => {
     const cap = balance.accrued + balance.carried;
     return el("div", { class: "balance-row" },
@@ -314,7 +314,7 @@ function renderLeaveValidation() {
     columns: [
       { label: "Person", render: (r) => el("span", { class: "small", text: personById(r.personId)?.name ?? r.personId }) },
       { label: "Type", render: (r) => typeBadge(r.type) },
-      { label: "Dates", render: (r) => el("span", { class: "small", text: `${shortDate(r.from)} – ${shortDate(r.to)}` }) },
+      { label: "Dates", render: (r) => el("span", { class: "small", text: `${shortDate(r.from)}, ${shortDate(r.to)}` }) },
       { label: "Days", align: "right", render: (r) => el("span", { class: "mono small", text: String(workingDays(r.from, r.to)) }) },
       { label: "Status", align: "right", render: (r) => statusBadge(r.status) },
       {
@@ -329,7 +329,7 @@ function renderLeaveValidation() {
   const upcoming = whoIsOut(data.requests, data.people, { from: TODAY, to: TODAY + 6 * DAY }).filter((d) => !d.weekend);
   $("#out-strip").replaceChildren(...upcoming.map((day) => el("div", { class: "availability-row" },
     el("span", { class: "date", text: shortDate(day.date) }),
-    el("span", { class: "small muted", style: "min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap", text: day.entries.length ? day.entries.map((e) => e.person.name.split(" ")[0]).join(", ") : "—" }),
+    el("span", { class: "small muted", style: "min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap", text: day.entries.length ? day.entries.map((e) => e.person.name.split(" ")[0]).join(", ") : ", " }),
     el("span", { class: "spacer" }),
     el("span", { class: `badge ${day.holiday ? "gold" : day.entries.length ? "red" : ""}`, text: day.holiday ? "holiday" : `${day.entries.length} out` }))));
 }

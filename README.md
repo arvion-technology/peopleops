@@ -2,7 +2,7 @@
 <img src="docs/demo.gif" alt="PeopleOps team directory" width="100%" />
 </div>
 
-<sub>Recorded from the live demo — <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
+<sub>Recorded from the live demo, <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
 
 # PeopleOps
 
@@ -16,7 +16,7 @@ itself, an approvals queue and a who-is-out calendar.
 
 Most HR tools are bought for the features nobody uses and priced per seat. This
 one is the opposite: four screens, one rulebook, no server. The demo team is
-fictional — fourteen people, four departments, a handful of leave requests — but
+fictional, fourteen people, four departments, a handful of leave requests, but
 every balance, warning and date on screen is calculated by `src/leave.js` and
 `src/onboarding.js`, which the tests import directly.
 
@@ -27,20 +27,20 @@ Saturday consumes leave, and what "overlap" means.
 
 ## What it does
 
-- **Team** — headcount, who is out today, pending approvals and onboarding
+- **Team**: headcount, who is out today, pending approvals and onboarding
   progress, above a two-column directory with each person's available annual
   leave and tenure.
-- **Onboarding** — one board per hire, five phases from pre-start to day 30,
+- **Onboarding**: one board per hire, five phases from pre-start to day 30,
   tasks dated in working days around the start date. Tick a task and it is
   saved; the equipment list shows what has been issued.
-- **Leave** — pick a person, a type and two dates. The form reports working days,
+- **Leave**: pick a person, a type and two dates. The form reports working days,
   the balance after approval, and every reason a request cannot go through
   (over balance, overlap, past date, empty range). Submit and it enters the
   queue.
-- **Approvals** — the queue re-validates each request against the current
+- **Approvals**: the queue re-validates each request against the current
   balance before showing it. Approve or reject with a reason; the decision is
   recorded.
-- **Who is out** — a month calendar of approved leave with public holidays
+- **Who is out**: a month calendar of approved leave with public holidays
   marked, plus a fourteen-day load strip so you can see the week a whole team
   disappears.
 
@@ -95,7 +95,7 @@ yearly entitlement and a carry-over cap:
 | Annual | 1.5 days / month | 18 | 5 |
 | Sick | 1 day / month | 12 | 0 |
 | Casual | 0.5 days / month | 6 | 0 |
-| Unpaid | — | — | — |
+| Unpaid |: |: |: |
 
 For a person who has been employed since before the leave year, the balance is:
 
@@ -108,11 +108,11 @@ available = accrued + carried − used − booked
 `used` counts approved requests that have already started; `booked` counts
 approved requests later in the year. Both are measured in working days, so a
 request that spans a Saturday costs one day less. On 28 October, nine completed
-months of annual leave is `min(18, 9 × 1.5) = 13.5` days — which is why the demo
+months of annual leave is `min(18, 9 × 1.5) = 13.5` days, which is why the demo
 directory shows balances like 13.5 and 16.5 rather than a flat 18.
 
 Overlap is inclusive at both ends: a request ending on 4 November conflicts with
-one starting on 4 November. Only pending and approved requests count — a rejected
+one starting on 4 November. Only pending and approved requests count, a rejected
 request never blocks a new one.
 
 `validateRequest` returns an array of problems rather than the first one, because
@@ -120,7 +120,7 @@ the form displays all of them at once. A request can fail for a missing person, 
 reversed range, a start in the past, a range with no working days, more than
 fifteen consecutive days, insufficient balance, or an overlap. Approval re-runs
 the same check and shows the flags again; a manager can still approve over a
-warning, which is deliberate — the flag is information, not a hard block.
+warning, which is deliberate, the flag is information, not a hard block.
 
 ## How onboarding dates are generated
 
@@ -185,9 +185,9 @@ node scripts/serve-check.mjs
 
 No server, no authentication and no audit log: two People Ops staff editing in
 different browsers would not see each other's changes, because everything lives
-in `localStorage`. The office week is fixed to Sunday–Friday with Saturday off;
+in `localStorage`. The office week is fixed to Sunday, Friday with Saturday off;
 festival holidays are a static list rather than a maintained calendar. There is
-no half-day leave, no hourly leave and no accrual mid-month proration — someone
+no half-day leave, no hourly leave and no accrual mid-month proration, someone
 joining on the 20th accrues from the first of the following month, which is
 simpler than what most payroll systems do.
 

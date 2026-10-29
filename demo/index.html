@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
-  <title>PeopleOps — onboarding and leave for small teams</title>
+  <title>PeopleOps | onboarding and leave for small teams</title>
   <meta name="description" content="HR operations for a small studio: a people directory, onboarding checklists with due dates, leave accrual with carry-over caps and overlap detection, approvals and a who-is-out calendar." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 9 L91 91 H73 L50 52 L27 91 H9 Z' fill='%23f5c26b'/><circle cx='50' cy='31' r='6.6' fill='%230b0f1a'/><path d='M50 52 L67 90 H33 Z' fill='%230b0f1a'/></svg>" />
   <link rel="stylesheet" href="arvion.css" />
@@ -29,7 +29,7 @@
       <a class="nav-item" href="#onboarding" data-view="onboarding"><span class="nav-dot"></span>Onboarding</a>
       <a class="nav-item" href="#leave" data-view="leave"><span class="nav-dot"></span>Leave</a>
       <a class="nav-item" href="#approvals" data-view="approvals"><span class="nav-dot"></span>Approvals
-        <span class="badge gold" id="nav-pending" style="margin-left:auto;padding:1px 7px">–</span></a>
+        <span class="badge gold" id="nav-pending" style="margin-left:auto;padding:1px 7px">, </span></a>
       <a class="nav-item" href="#calendar" data-view="calendar"><span class="nav-dot"></span>Who is out</a>
 
       <div class="nav-label">Workspace</div>
@@ -54,8 +54,8 @@
           <span class="badge gold">Kathmandu</span>
         </div>
         <span class="spacer"></span>
-        <span class="small muted">Sun–Fri · Saturday off</span>
-        <span class="badge" title="Demo date"><span class="dot pulse" style="color:var(--green)"></span><span class="mono" id="today">—</span></span>
+        <span class="small muted">Sun, Fri · Saturday off</span>
+        <span class="badge" title="Demo date"><span class="dot pulse" style="color:var(--green)"></span><span class="mono" id="today">, </span></span>
         <div class="avatar" title="People Ops">HR</div>
       </header>
 
@@ -82,13 +82,13 @@
               <div class="row" style="padding:14px 16px;border-bottom:1px solid var(--line)">
                 <span class="card-title">Directory</span>
                 <span class="spacer"></span>
-                <span class="small muted" id="directory-count">—</span>
+                <span class="small muted" id="directory-count">, </span>
               </div>
               <div id="directory-table"></div>
             </div>
             <div class="col" style="gap:14px">
               <div class="card">
-                <div class="card-head"><div class="card-title">Out today</div><span class="spacer"></span><span class="badge" id="out-count">—</span></div>
+                <div class="card-head"><div class="card-title">Out today</div><span class="spacer"></span><span class="badge" id="out-count">, </span></div>
                 <div id="out-today"></div>
               </div>
               <div class="card">
@@ -117,7 +117,7 @@
 
           <div class="grid grid-3" style="margin-top:14px">
             <div class="card">
-              <div class="card-head"><div class="card-title">Progress</div><span class="spacer"></span><span class="badge" id="onboarding-progress-badge">—</span></div>
+              <div class="card-head"><div class="card-title">Progress</div><span class="spacer"></span><span class="badge" id="onboarding-progress-badge">, </span></div>
               <div id="onboarding-summary"></div>
             </div>
             <div class="card">
@@ -165,14 +165,14 @@
               </div>
             </div>
             <div class="card">
-              <div class="card-head"><div class="card-title">Balances</div><span class="spacer"></span><span class="small muted" id="balance-person">—</span></div>
+              <div class="card-head"><div class="card-title">Balances</div><span class="spacer"></span><span class="small muted" id="balance-person">, </span></div>
               <div id="balance-panel" class="col" style="gap:12px"></div>
             </div>
           </div>
 
           <div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
             <div class="card pad-sm" style="padding:0">
-              <div class="card-head" style="padding:14px 16px 6px"><div class="card-title">Request log</div><span class="spacer"></span><span class="badge mono" id="request-count">—</span></div>
+              <div class="card-head" style="padding:14px 16px 6px"><div class="card-title">Request log</div><span class="spacer"></span><span class="badge mono" id="request-count">, </span></div>
               <div id="request-table"></div>
             </div>
             <div class="card">
@@ -191,7 +191,7 @@
               <p class="lede">Each pending request is re-checked against the current balance and the request log before you approve it, not just when it was submitted.</p>
             </div>
             <span class="spacer"></span>
-            <span class="badge gold" id="approval-count">—</span>
+            <span class="badge gold" id="approval-count">, </span>
           </div>
 
           <div class="grid" style="grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)">
@@ -214,7 +214,7 @@
             <span class="spacer"></span>
             <div class="row">
               <button class="btn sm" id="cal-prev">← Previous</button>
-              <span class="badge gold mono" id="cal-label">—</span>
+              <span class="badge gold mono" id="cal-label">, </span>
               <button class="btn sm" id="cal-next">Next →</button>
             </div>
           </div>
